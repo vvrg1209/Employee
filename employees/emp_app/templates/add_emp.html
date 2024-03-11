@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adding Employees</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'all.css' %}">
+</head>
+<body>
+<div align="center">
+<div align="right">
+    <form action="{% url 'home' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Home</button>
+    </form>
+</div>
+{% if success_message %}
+        <p>{{ success_message }}</p>
+    {% endif %}
+     {% if error_message %}
+        <p>{{ error_message }}</p>
+    {% endif %}
+<h1>Adding New Employee</h1>
+<form action="/add_emp" method="POST">
+    {% csrf_token %}
+    <label for="first_name">First Name</label>
+    <input type="text" name="first_name" id="first_name"> <br> <br>
+
+    <label for="Last_name">Last Name</label>
+    <input type="text" name="Last_name" id="Last_name"> <br> <br>
+
+     <label for="age">Age</label>
+    <input type="Number" name="age" id="age"> <br> <br>
+
+     <label for="department">Department</label>
+    <select id="department" name="department">
+        <option value="HR">HR</option>
+        <option value="Finance">Finance</option>
+        <option value="Sales">Sales</option>
+        <option value="Marketing">Marketing</option>
+        <option value="IT">IT</option>
+        <option value="Maintenance">Maintenance</option>
+        <option value="Production">Production</option>
+        <option value="Quality">Quality</option>
+        <option value="Purchase">Purchase</option>
+        <option value="Safety">Safety</option>
+
+    </select> <br> <br>
+
+ <button type="submit">Submit</button>
+</form>
+    </div>
+</body>
+</html>

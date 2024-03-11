@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>all</title>
+      {% load static %}
+    <link rel="stylesheet" href="{% static 'all.css' %}">
+</head>
+<body>
+<div align="right">
+    <form action="{% url 'home' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Home</button>
+    </form>
+</div>
+<h1 align="center">List of employees</h1>
+<table align="center" border="2" border=9px cellspacing='9' cellpadding='9' bordercolor='purple'>
+    <tr>
+        <th>Employee ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Department Name</th>
+    </tr>
+    {% for emp in emps %}
+    <tr>
+        <td>{{emp.employee_id}}</td>
+        <td>{{emp.first_name}}</td>
+        <td>{{emp.last_name}}</td>
+        <td>{{emp.age}}</td>
+        <td>{{emp.dept}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+</body>
+</html>
